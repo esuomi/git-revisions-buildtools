@@ -4,10 +4,11 @@
             [git-revisions.core :as revisions]))
 
 (defn generate-revision
-  [configuration]
+  [tool-opts]
   (let [project-root (build-api/resolve-path ".")]
     (sh/with-sh-dir project-root
-      (let [{:keys [format adjust revision-file]} configuration
+      (let [{:keys [configuration]}               tool-opts
+            {:keys [format adjust revision-file]} configuration
             version (revisions/revision-generator format adjust (when (some? revision-file)
                                                                   {:output-path  (build-api/resolve-path revision-file)
                                                                    :project-root project-root}))]
