@@ -6,7 +6,7 @@
 
   :scm {:name "git" :url "https://github.com/esuomi/git-revisions-buildtools"}
 
-  :dependencies [[fi.polycode/git-revisions "1.1.0"]
+  :dependencies [[fi.polycode/git-revisions "1.2.0"]
                  [clojure/tools.build "ba1a2bf421838802e7bdefc541b41f57582e53b6" :scope "provided"]]
 
   :repositories [["public-github" {:url "git://github.com"}]]
