@@ -12,22 +12,26 @@ Automatically control [tools.build](https://github.com/clojure/tools.build) base
     ```shell
     git tag -a v0.0.0 -m "initial version"
     ```
- 2. **Add plugin definition to `project.clj`**
+ 2. **Add library dependency to `deps.edn`**
     ```clojure
-    (defproject foo/bar "_"  ; replace project version string with underscore
-      ...
-      ; add the plugin dependency
-      :plugins [[fi.polycode/lein-git-revisions "LATEST"]
-                ...]
-      ; add recommended default configuration
-      :git-revisions {:format        :semver
-                      :adjust        [:env/revision_adjustment :minor]
-                      :revision-file "resources/metadata.edn"}
-      ...)
+    {:deps {...}
+     :aliases {:build {:extra-deps {io.github.clojure/tools.build {:git/tag "v0.8.2" :git/sha "ba1a2bf"}
+                                    io.polycode/git-revisions-buildtools {:mvn/version "0.1.0-SNAPSHOT"}}
+                       :ns-default build}}}
     ```
+ 3. **Use the library in your build script**
+    ```clojure
+    (ns build
+      (:require [git-revisions.buildtools :as rev]
+                ...))
 
-> Project version must be a string for IDE compatability. For example Cursive makes assumptions based on the version
-> always being a string.
+    (def next-version (rev/generate-revision {:configuration
+                                              {:format :semver
+                                               :adjust [:env/revision_adjustment :minor]
+                                               :revision-file "resources/metadata.edn"}}))
+
+    ; next-version now contains the next revision of the project as per configuration
+    ```
 
 Further configuration options are described in depth at [git-revisions core library's README](https://github.com/esuomi/git-revisions#configuration).
 
