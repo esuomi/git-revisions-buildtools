@@ -5,7 +5,7 @@
 
 (defn generate-revision
   [tool-opts]
-  (let [project-root (build-api/resolve-path ".")]
+  (let [project-root (.getPath (build-api/resolve-path "."))]
     (sh/with-sh-dir project-root
       (let [{:keys [configuration]}               tool-opts
             {:keys [format adjust revision-file]} configuration
