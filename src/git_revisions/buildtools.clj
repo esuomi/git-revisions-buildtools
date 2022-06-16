@@ -10,7 +10,7 @@
       (let [{:keys [configuration]}               tool-opts
             {:keys [format adjust revision-file]} configuration
             version (revisions/revision-generator format adjust (when (some? revision-file)
-                                                                  {:output-path  (build-api/resolve-path revision-file)
+                                                                  {:output-path  (.getAbsolutePath (build-api/resolve-path revision-file))
                                                                    :project-root project-root}))]
         version))))
 
