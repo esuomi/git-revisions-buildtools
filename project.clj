@@ -9,7 +9,7 @@
   :dependencies [[fi.polycode/git-revisions "1.1.0"]
                  [clojure/tools.build "ba1a2bf421838802e7bdefc541b41f57582e53b6"]]
 
-  :repositories [["public-github" {:url "https://github.com"}]]
+  :repositories [["public-github" {:url "git://github.com"}]]
 
   :deploy-repositories [["clojars" {:sign-releases false
                                     :url           "https://clojars.org/repo"
