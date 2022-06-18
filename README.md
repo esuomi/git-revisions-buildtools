@@ -16,7 +16,7 @@ Automatically control [tools.build](https://github.com/clojure/tools.build) base
     ```clojure
     {:deps {...}
      :aliases {:build {:extra-deps {io.github.clojure/tools.build {:git/tag "v0.8.2" :git/sha "ba1a2bf"}
-                                    io.polycode/git-revisions-buildtools {:mvn/version "0.1.0-SNAPSHOT"}}
+                                    fi.polycode/git-revisions-buildtools {:mvn/version "0.1.0-SNAPSHOT"}}
                        :ns-default build}}}
     ```
  3. **Use the library in your build script**
