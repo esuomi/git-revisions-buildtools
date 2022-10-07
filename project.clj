@@ -6,7 +6,7 @@
 
   :scm {:name "git" :url "https://github.com/esuomi/git-revisions-buildtools"}
 
-  :dependencies [[fi.polycode/git-revisions "1.2.1"]
+  :dependencies [[fi.polycode/git-revisions "1.2.2"]
                  [clojure/tools.build "ba1a2bf421838802e7bdefc541b41f57582e53b6" :scope "provided"]]
 
   :repositories [["public-github" {:url "git://github.com"}]]
@@ -22,11 +22,12 @@
             [lein-pprint "1.3.2"]
             [reifyhealth/lein-git-down "0.4.1"]]
 
-  :profiles {:dev {:dependencies [[lambdaisland/kaocha "1.64.1010"]
-                                  [lambdaisland/kaocha-cloverage "1.0.75"]]}}
+  :profiles {:dev {:dependencies [[lambdaisland/kaocha "1.70.1086"]
+                                  [lambdaisland/kaocha-cloverage "1.0-45"]
+                                  [lambdaisland/kaocha-junit-xml "1.16.98"]]}}
 
   :git-revisions {:format        :semver
                   :adjust        [:env/BUILDTOOLS_REVISIONS_ADJUSTMENT :minor]
                   :revision-file "resources/metadata.edn"}
 
-  :aliases {"kaocha" ["run" "-m" "kaocha.runner"]})
+  :aliases {"kaocha" ["run" "-m" "kaocha.runner" "--junit-xml-file" "target/junit.xml"]})
