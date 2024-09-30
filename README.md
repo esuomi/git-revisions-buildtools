@@ -6,6 +6,9 @@
 
 Automatically control [tools.build](https://github.com/clojure/tools.build) based project version based on Git and system metadata.
 
+> ## Archival note
+> This library is no longer maintained, but remains functional. Its latest published version can be considered feature complete and has proven to be stable. If you need to modify the library in any way, do consider [forking](https://github.com/esuomi/git-revisions-buildtools/fork).
+
 ## Usage
 
  1. **Add suitable base tag to repository**
